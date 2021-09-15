@@ -4,7 +4,9 @@ import NavBar from "./components/NavBar";
 import { Container } from "semantic-ui-react";
 import { Route, Switch } from "react-router";
 import Home from "./components/Home";
-import Things from "./components/Things";
+import Appointments from "./components/Appointments";
+import Patients from "./components/Patient";
+import Doctors from "./components/Doctors";
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
       <Container>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/things" component={Things} />
+          <Route exact path="/appointments" component={Appointments} />
+          <Route exact path="/patients" component={Patients} />
+          <Route exact path="/doctors" component={Doctors} />
           <Route component={() => <p>react router 404 path not found</p>} />
         </Switch>
       </Container>

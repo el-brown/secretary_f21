@@ -13,9 +13,19 @@ class NavBar extends React.Component {
                 <Link to='/'>
                   <Menu.Item active={location.pathname == '/'} >Home</Menu.Item >
                 </Link>
-                <Link to='/things'>
-                  <Menu.Item active={location.pathname == '/things'} >
-                    Things   
+                <Link to='/appointments'>
+                  <Menu.Item active={location.pathname == '/appointments'} >
+                    Appointments   
+                 </Menu.Item >
+                </Link>
+                <Link to='/doctors'>
+                  <Menu.Item active={location.pathname == '/doctors'} >
+                    Doctors   
+                 </Menu.Item >
+                </Link>
+                <Link to='/patients'>
+                  <Menu.Item active={location.pathname == '/patients'} >
+                    Patients   
                  </Menu.Item >
                 </Link>
             </Menu>
