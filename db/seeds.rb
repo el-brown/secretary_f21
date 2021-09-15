@@ -9,5 +9,35 @@
 
 
 require 'faker'
-Thing.create(name:Faker::Company.name )
-Thing.create(name:Faker::Company.name )
+Appointment.destroy_all
+Doctor.destroy_all
+Patient.destroy_all
+
+
+
+doctors = []
+
+  5.times do
+  doc = Doctor.create(last_name: Faker::Name.last_name)
+  doctors.push(doc)
+end
+
+
+5.times do |i|
+  patient = Patient.create(name: Faker::Name.name)
+  5.times do |i|
+    Appointment.create(
+      time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short), 
+      doctor_id: doctors[i].id, patient_id: patient.id)
+  end
+end
+
+puts "SKILLZZ SIZE: #{Doctor.all.length}"
+puts "USER SIZE: #{Patient.all.length}"
+puts "GRADE SIZE: #{Appointment.all.length}"
+
+# grab patients doctor
+puts "FIRST USER SKILLs: #{Patient.first.doctors}"
+
+# grab patients firts doctor grades
+puts "FIRST USER Appointments: #{Patient.first.appointments}"
