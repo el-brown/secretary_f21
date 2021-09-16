@@ -17,6 +17,8 @@ export default function Appointments() {
     } catch (error) {}
   };
 
+//TO DO Sort the appointments by time.
+
   const renderAppts = () => {
     return appts.map ((a) => {
       return (
@@ -34,7 +36,16 @@ export default function Appointments() {
   return (
     <div>
       <h1>Appointments</h1>
-      <p>{renderAppts()}</p>
+      <Table>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Time</Table.HeaderCell>
+            <Table.HeaderCell>Patient</Table.HeaderCell>
+            <Table.HeaderCell>Doctor</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        {renderAppts() }
+      </Table>
     </div>
   );
 }

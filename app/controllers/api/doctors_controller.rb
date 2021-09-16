@@ -1,4 +1,4 @@
-class Api::PatientsController < ApplicationController
+class Api::DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :destroy]
 
   def index 
@@ -25,7 +25,7 @@ class Api::PatientsController < ApplicationController
   end
 
   private
-  def set_patient
+  def set_doctor
     @doctor = Doctor.find(params[:id])
   end
 
