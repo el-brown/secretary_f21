@@ -13,7 +13,7 @@ Appointment.destroy_all
 Doctor.destroy_all
 Patient.destroy_all
 
-
+times = ["9:00","10:00","11:00","12:00","1:00","2:00","3:00","4:00","9:30","10:30","11:30","12:30","1:30","2:30","3:30","4:30"]
 
 doctors = []
 
@@ -22,12 +22,11 @@ doctors = []
   doctors.push(doc)
 end
 
-
 5.times do |i|
   patient = Patient.create(name: Faker::Name.name)
   5.times do |i|
     Appointment.create(
-      time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short), 
+      time: times.sample, 
       doctor_id: doctors[i].id, patient_id: patient.id)
   end
 end
