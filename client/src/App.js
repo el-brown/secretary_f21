@@ -5,7 +5,7 @@ import { Container } from "semantic-ui-react";
 import { Route, Switch } from "react-router";
 import Home from "./components/Home";
 import Appointments from "./components/Appointments";
-import Patients from "./components/Patient";
+import Patients from "./components/Patients";
 import Doctors from "./components/Doctors";
 
 function App() {

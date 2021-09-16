@@ -1,27 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { Card, Table } from "semantic-ui-react";
 
 export default function Appointments() {
+  const [appts, setAppts] = useState([])
+
   useEffect(() => {
-    getAppointments();
+    getAppts();
   }, []);
 
-  const getAppointments = async () => {
+  const getAppts = async () => {
     try {
-      let res = await axios.get("/api/things");
-      console.log(res);
+      let res = await axios.get("/api/appointments");
+      setAppts(res.data);
     } catch (error) {}
   };
+
+  const renderAppts = () => {
+    return appts.map ((a) => {
+      return (
+        <Table.Body>
+          <Table.Row>
+              <Table.Cell>{a.time}</Table.Cell>
+              <Table.Cell>{a.patient.name}</Table.Cell>
+              <Table.Cell>Dr. {a.doctor.last_name}</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      );
+    });
+  };
+
   return (
     <div>
       <h1>Appointments</h1>
-      <Text>working</Text>
+      <p>{renderAppts()}</p>
     </div>
   );
 }
-
-const Text = styled.p`
-  color: red;
-  font-size: 40px;
-`;
