@@ -3,10 +3,10 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import { Container } from "semantic-ui-react";
 import { Route, Switch } from "react-router";
-import Home from "./components/Home";
-import Appointments from "./components/Appointments";
-import Patients from "./components/Patients";
-import Doctors from "./components/Doctors";
+import Home from "./pages/Home";
+import Appointments from "./pages/Appointments";
+import Patients from "./pages/Patients";
+import Doctors from "./pages/Doctors";
 
 function App() {
   return (

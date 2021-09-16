@@ -3,18 +3,18 @@ import axios from "axios";
 import styled from "styled-components";
 import { Card, Table } from "semantic-ui-react";
 
-export default function Doctors() {
-  const [docs, setDocs] = useState([])
+export default function Patients() {
+  const [patients, setPatients] = useState([])
 
   useEffect(() => {
-    getDocs();
+    getPatients();
   }, []);
 
-  const getDocs = async () => {
+  const getPatients = async () => {
     try {
-      let res = await axios.get("/api/doctors");
+      let res = await axios.get("/api/patients");
       console.log(res.data);
-      setDocs(res.data);
+      setPatients(res.data);
 
     } catch (error) {}
   };
@@ -30,12 +30,13 @@ export default function Doctors() {
 //   return sorted
 // }
 
-  const renderDoctors = () => {
-    return docs.map ((d) => {
+  const renderPatients = () => {
+    return patients.map ((p) => {
       return (
         <Table.Body>
           <Table.Row>
-              <Table.Cell>Dr. {d.last_name}</Table.Cell>
+              <Table.Cell>{p.name}</Table.Cell>
+              {/* < /> */}
           </Table.Row>
         </Table.Body>
       );
@@ -44,15 +45,15 @@ export default function Doctors() {
 
   return (
     <div>
-      <h1>Doctors</h1>
+      <h1>Patients</h1>
       <Table>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Doctors</Table.HeaderCell>
+            <Table.HeaderCell>Patients</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         {/* {sortApps()} */}
-        {renderDoctors() }
+        {renderPatients() }
       </Table>
     </div>
   );

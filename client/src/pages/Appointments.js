@@ -14,6 +14,7 @@ export default function Appointments() {
     try {
       let res = await axios.get("/api/appointments");
       setAppts(res.data);
+      console.log(res.data)
     } catch (error) {}
   };
 
@@ -22,7 +23,7 @@ export default function Appointments() {
   const renderAppts = () => {
     return appts.map ((a) => {
       return (
-        <Table.Body>
+        <Table.Body key={a.id}>
           <Table.Row>
               <Table.Cell>{a.time}</Table.Cell>
               <Table.Cell>{a.patient.name}</Table.Cell>
