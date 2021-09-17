@@ -37,7 +37,7 @@ const NewPatientAppt = () => {
       patient_id: patientId, 
       doctor_id: doctorId, 
     });
-    setTime("")
+    //reroute to appointments
   };
 
   const renderPatients = () => {

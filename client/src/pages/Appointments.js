@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Button, Card, Table, TableBody } from "semantic-ui-react";
 import ListLoader from "../components/ListLoader";
-import NewAppoint from "./NewAppoint";
+import { Link } from "react-router-dom";
 
 
 export default function Appointments() {
@@ -10,7 +10,7 @@ export default function Appointments() {
     <>
     <div>
       <h1>Appointments</h1>
-      <NewAppoint /> 
+      <Button><Link to='/newappoint'> New Appointment</Link> </Button>
       <Table>
       <Table.Header>
           <Table.Row>
