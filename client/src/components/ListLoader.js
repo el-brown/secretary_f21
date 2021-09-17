@@ -3,7 +3,7 @@ import useAxiosOnMount from '../hooks/useAxiosOnMount';
 import SemanticLoadError from './Error';
 import SemanticLoader from './SemanticLoader';
 
-const ListLoader = ({url , renderData, header , errorMessage}) => {
+const ListLoader = ({url , renderData, header , errorMessage, title}) => {
   const { data, loading, error } = useAxiosOnMount(url);
 
   const renderList = () => {
@@ -17,13 +17,17 @@ const ListLoader = ({url , renderData, header , errorMessage}) => {
     return data.map(renderData)
   };
 
-  return (
-    <div>
-      <h1>{header}</h1>
-      {renderList()}
-    </div>
-  );
-};
+    return (
+      <>
+      {title = "table" ? renderList() :
+        <div>
+          <h1>{header}</h1>
+          {renderList()}
+       </div>
+      }
+      </>
+    );
+  };
 
 export default ListLoader;
 

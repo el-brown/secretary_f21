@@ -24,19 +24,13 @@ end
 
 5.times do |i|
   patient = Patient.create(name: Faker::Name.name)
-  5.times do |i|
+  2.times do |i|
     Appointment.create(
       time: times.sample, 
       doctor_id: doctors[i].id, patient_id: patient.id)
   end
 end
 
-puts "SKILLZZ SIZE: #{Doctor.all.length}"
-puts "USER SIZE: #{Patient.all.length}"
-puts "GRADE SIZE: #{Appointment.all.length}"
-
-# grab patients doctor
-puts "FIRST USER SKILLs: #{Patient.first.doctors}"
-
-# grab patients firts doctor grades
-puts "FIRST USER Appointments: #{Patient.first.appointments}"
+puts "Doc SIZE: #{Doctor.all.length}"
+puts "Patient SIZE: #{Patient.all.length}"
+puts "Appointments SIZE: #{Appointment.all.length}"

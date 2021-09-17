@@ -28,6 +28,11 @@ class NavBar extends React.Component {
                     Patients   
                  </Menu.Item >
                 </Link>
+                <Link to='/newappoint'>
+                  <Menu.Item active={location.pathname === '/newappoint'} >
+                    New Appointment   
+                 </Menu.Item >
+                </Link>
             </Menu>
         )
 

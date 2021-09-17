@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, Table, TableBody } from "semantic-ui-react";
+import { Button, Card, Table, TableBody } from "semantic-ui-react";
 import ListLoader from "../components/ListLoader";
+import NewAppoint from "./NewAppoint";
 
 
 export default function Appointments() {
@@ -9,6 +10,7 @@ export default function Appointments() {
     <>
     <div>
       <h1>Appointments</h1>
+      <NewAppoint /> 
       <Table>
       <Table.Header>
           <Table.Row>
@@ -20,12 +22,13 @@ export default function Appointments() {
         <Table.Body>
           <ListLoader
             url="/api/appointments"
+            title = "table"
             renderData={(a) => {
               return (
                 <Table.Row>
-                 <Table.Cell>{a.time}</Table.Cell>
-                  <Table.Cell>{a.patient.name}</Table.Cell>
-                  <Table.Cell>Dr. {a.doctor.last_name}</Table.Cell>
+                 <Table.Cell className="four wide">{a.time}</Table.Cell>
+                  <Table.Cell className="six wide">{a.patient.name}</Table.Cell>
+                  <Table.Cell className="six wide">Dr. {a.doctor.last_name}</Table.Cell>
                 </Table.Row>
               )
             }}
