@@ -19,14 +19,9 @@ export default function Patients() {
     } catch (error) {}
   };
 
-//TO DO Sort the appointments by time.
+//TO DO Sort the Patients by name.
 
-//   const sortApps = () => {
-//     let sorted = docs.doctor.sort(function(f,s) {
-//     if (f.doctor < s.doctor) { return -1; }
-//     if (f.doctor > s.doctor) { return 1; }
-//     return 0
-//   })
+//   const sortPatients = () => {
 //   return sorted
 // }
 

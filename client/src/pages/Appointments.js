@@ -1,52 +1,45 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import styled from "styled-components";
-import { Card, Table } from "semantic-ui-react";
+import { Card, Table, TableBody } from "semantic-ui-react";
+import ListLoader from "../components/ListLoader";
+
 
 export default function Appointments() {
-  const [appts, setAppts] = useState([])
-
-  useEffect(() => {
-    getAppts();
-  }, []);
-
-  const getAppts = async () => {
-    try {
-      let res = await axios.get("/api/appointments");
-      setAppts(res.data);
-      console.log(res.data)
-    } catch (error) {}
-  };
-
-//TO DO Sort the appointments by time.
-
-  const renderAppts = () => {
-    return appts.map ((a) => {
-      return (
-        <Table.Body key={a.id}>
-          <Table.Row>
-              <Table.Cell>{a.time}</Table.Cell>
-              <Table.Cell>{a.patient.name}</Table.Cell>
-              <Table.Cell>Dr. {a.doctor.last_name}</Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      );
-    });
-  };
-
   return (
+    <>
     <div>
       <h1>Appointments</h1>
       <Table>
-        <Table.Header>
+      <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Time</Table.HeaderCell>
             <Table.HeaderCell>Patient</Table.HeaderCell>
             <Table.HeaderCell>Doctor</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-        {renderAppts() }
+        <Table.Body>
+          <ListLoader
+            url="/api/appointments"
+            renderData={(a) => {
+              return (
+                <Table.Row>
+                 <Table.Cell>{a.time}</Table.Cell>
+                  <Table.Cell>{a.patient.name}</Table.Cell>
+                  <Table.Cell>Dr. {a.doctor.last_name}</Table.Cell>
+                </Table.Row>
+              )
+            }}
+            />
+        </Table.Body>
       </Table>
-    </div>
+      </div>
+    </>
   );
-}
+};
+     
+
+
+ 
+
+//TO DO Sort the appointments by time.
+
